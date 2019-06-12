@@ -1,0 +1,35 @@
+import java.util.Scanner;
+//Str 3
+public class Str3 {
+	public static void main (String[]args) {
+		//String str;
+		//String str2;
+		String str3;
+		//str = getStr();
+		//str2 = getStr2();
+		str3 = getStr3();
+		//if (rhymningStr(str))
+			//System.out.println("This str rhymes with mouse (berima)");
+		//else 
+		if (rhymningStr3(str3))
+			System.out.println("This str rhymes with mouse (berima)");
+		else
+			System.out.println("This str doesn't rhyme! (tidak berima)");
+		//endif
+	}//end method main
+	
+	private static boolean rhymningStr3(String str3) {
+		//return str3.matches(" *anana| anana| _anana");
+		return str3.matches("*anana");
+	}//end method rhymningStr
+	
+	private static String getStr3() {
+		String str3;
+		Scanner in = new Scanner(System.in);
+		System.out.println("Bahasa inggrisnya Pisang adalah: ");
+		str3 = in.next();
+		in.close();
+		return str3;
+	}//end method getStr
+	
+}//end class

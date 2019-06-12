@@ -1,0 +1,61 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Cipher {
+	
+	private static final class CypherText {
+        private final int key;
+        private final String text;
+ 
+        public CypherText(int key, String text) {
+            super();
+            this.key = key;
+            this.text = text;
+        }
+ 
+        public int getKey() {
+            return key;
+        }
+ 
+        public String getText() {
+            return text;
+        }
+ 
+    }
+	
+	public static CypherText getEncoded() {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
+            int k = Integer.parseInt(reader.readLine());
+            String word = reader.readLine();
+            return new CypherText(k, word);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new CypherText(0, "");
+        }
+    }
+ 
+    public static final String decode(final int key, final String encoded) {
+        final int len = encoded.length();
+        char[] decoded = new char[len];
+        for (int i = 0; i < len; i++) {
+            decoded[i] = decodeChar(encoded.charAt(i), i + 1, key);
+        }
+        return new String(decoded);
+    }
+ 
+    private static char decodeChar(final char encoded, final int position, final int key) {
+        // modulo 26 eliminates multiple wrap-arounds.
+        int rotate = (3 * position + key) % 26;
+        // apply the rotation shift to the input
+        int decval = (encoded - 'A') + 26 - rotate;
+        // use another % 26 to keep the letters in range.
+        return (char)('A' + (decval % 26));
+    }
+ 
+    public static void main(String[] args) {
+        CypherText input = getEncoded();
+        String decoded = decode(input.getKey(), input.getText());
+        System.out.println("Decoded: " + decoded);
+    }
+}

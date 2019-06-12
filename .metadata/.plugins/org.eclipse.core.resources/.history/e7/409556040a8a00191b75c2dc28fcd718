@@ -1,0 +1,31 @@
+import java.util.Scanner;
+//Str 1
+
+public class RegularExp2 {
+	public static void main (String[]args) {
+		String str;
+		str = getStr();
+		if (rhymningStr(str))
+			System.out.println("This str rhymes with mouse (berima)");
+		else
+			System.out.println("This str doesn't rhyme! (tidak berima)");
+		//endif
+	}//end method main
+	
+	private static boolean rhymningStr(String str) {
+		return str.matches(" ?anana| ?banana | ?gabanana");
+		//return str.matches( "?banana");
+		
+	}//end method rhymningStr
+	
+	private static String getStr() {
+		String str;
+//		str="anana|banana";
+		Scanner in = new Scanner(System.in);
+		System.out.println("Bahasa inggrisnya Pisang adalah: ");
+		str = in.next();
+		in.close();
+		return str;
+	}//end method getStr
+	
+}//end class

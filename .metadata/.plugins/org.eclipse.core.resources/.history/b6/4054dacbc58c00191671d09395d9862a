@@ -1,0 +1,17 @@
+import java.util.regex.*; 
+import java.io.*; 
+public class AnswerKeyProblem { 
+	public static void main(String args[]) throws IOException { 
+	//read in the file provided by your teacher 
+		BufferedReader codedAnswers = new BufferedReader(new FileReader("CodedAnswerKey")); 
+	//initialize String line as the first line of the file 
+		String line = codedAnswers.readLine(); 
+	//keep reading each line and adding answers that match answer 
+	//possibilities to string answers until there are no more lines 
+	//in the file 
+		while(line!=null) { 
+		//read the next line of the file 
+			line=codedAnswers.readLine(); 
+		} 
+	} 
+}
